@@ -3,4 +3,6 @@ class PagesController < ApplicationController
         @title = 'About Us'
         @content = 'This is the about page'
     end
+
+    
 end
