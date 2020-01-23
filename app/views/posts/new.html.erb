@@ -1,8 +1,13 @@
 <h1>Add Post</h1>
 <%= form_for :post,url: posts_path do |f|%>
+    <% if @post.errors.any? %>
+        <% @post.errors.full_messages.each do |msg|%>
+            <div class='alert alert-danger'><%= msg %></div>
+        <% end %>
+    <% end %>
     <p>
         <%= f.label :title %><br>
-        <%= f.text_field :title %>
+        <%= f.text_field (:title) %>
     </p>
     
     <p>
@@ -11,6 +16,6 @@
     </p>
 
     <p>
-        <%= f.submit%>
+        <%= f.submit({:class => 'btn btn-primary'})%>
     </p>
 <%end%>
