@@ -30,4 +30,26 @@ class PostsController < ApplicationController
         #For create
         params.require(:post).permit(:title, :body)
     end
+
+    def edit
+        @post = Post.find(params[:id])
+    end
+
+    def update 
+        #after edit and save post click on edit this will be rendered
+        @post = Post.find(params[:id])
+
+        if (@post.update(post_params))
+            redirect_to @post
+            else 
+                render 'edit'
+            end
+    end
+
+    def destroy
+        @post = Post.find(params[:id])
+        @post.destroy
+
+        redirect_to posts_path
+    end
 end
