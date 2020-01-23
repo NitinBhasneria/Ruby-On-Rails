@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+    http_basic_authenticate_with name: 'Nitin', password:'1234', except:[:index, :show]
+
     def index
         #This will be the main page
         @posts = Post.all
